@@ -2,9 +2,11 @@
 
 Athena is a utility which generates the current Fortnite Item Shop into a stylized image and shares it on Twitter.
 
-# Other Versions
+# Versions
 
-[Fortnite-API](https://github.com/Liimiitz/Athena)
+[FortniteAPI.io](https://github.com/Liimiitz/Athena FNAPI.io)
+
+[Fortnite-API.com](https://github.com/Liimiitz/Athena)
 
 [SoonTM](SoonTM)
 
