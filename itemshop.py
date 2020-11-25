@@ -3,6 +3,7 @@ import logging
 from math import ceil
 from sys import exit
 from time import sleep
+from datetime import date
 
 import coloredlogs
 import twitter
@@ -14,6 +15,7 @@ log = logging.getLogger(__name__)
 coloredlogs.install(
     level="INFO", fmt="[%(asctime)s] %(message)s", datefmt="%I:%M:%S")
 
+today = date.today()
 
 class Athena:
     """Fortnite Item Shop Generator."""
@@ -40,7 +42,7 @@ class Athena:
                 itemShop = json.loads(itemShop)
 
                 # Strip time from the timestamp, we only need the date
-                date = Utility.ISOtoHuman(self, itemShop["endingDates"]["daily"].split("T")[0], self.language)
+                date = Utility.ISOtoHuman(self, today, self.language)
                 log.info(f"Retrieved Item Shop for {date}")
 
                 shopImage = Athena.GenerateImage(self, date, itemShop)

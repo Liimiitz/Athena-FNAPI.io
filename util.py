@@ -30,11 +30,10 @@ class Utility:
     def nowISO(self):
         """Return the current utc time in ISO8601 timestamp format."""
 
-        return datetime.utcnow().isoformat()
+        return datetime.utcnow()
 
     def ISOtoHuman(self, date: str, language: str):
         """Return the provided ISO8601 timestamp in human-readable format."""
-
         try:
             locale.setlocale(locale.LC_ALL, language)
         except locale.Error:
@@ -42,11 +41,11 @@ class Utility:
 
         try:
             # Unix-supported zero padding removal
-            return datetime.strptime(date, "%Y-%m-%d").strftime("%-d %B %Y")
+            return date.strftime("%-d %B %Y")
         except ValueError:
             try:
                 # Windows-supported zero padding removal
-                return datetime.strptime(date, "%Y-%m-%d").strftime("%#d %B %Y")
+                return date.strftime("%#d %B %Y")
             except Exception as e:
                 log.error(self, f"Failed to convert to human-readable time, {e}")
 
