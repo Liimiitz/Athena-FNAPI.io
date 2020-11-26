@@ -89,10 +89,7 @@ class Athena:
             featured = itemShop["featured"] + itemShop["specialFeatured"]
             daily = itemShop["daily"] + itemShop["specialDaily"]
 
-            # Ensure both Featured and Daily have at least 1 item
-            if (len(featured) <= 0) or (len(daily) <= 0):
-                raise Exception(
-                    f"Featured: {len(featured)}, Daily: {len(daily)}")
+            log.info(f"Featured: {len(featured)}, Daily: {len(daily)}")
 
             if (len(featured) >= 1):
                 rowsDaily = 3
