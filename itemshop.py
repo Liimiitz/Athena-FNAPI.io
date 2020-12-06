@@ -231,7 +231,7 @@ class Athena:
             rarity = "Dark"
         elif rarity == "star wars series":
             blendColor = (231, 196, 19)
-            rarity = "StarWars"
+            rarity = "Star Wars"
         elif rarity == "marvel":
             blendColor = (197, 51, 52)
             rarity = "Marvel"
@@ -244,6 +244,9 @@ class Athena:
         elif rarity == "shadow series":
             blendColor = (113, 113, 113)
             rarity = "Shadow"
+        elif rarity == "platform series":
+            blendColor = (117,108,235)
+            rarity = "Gaming Legends"
         elif rarity == "epic":
             blendColor = (177, 91, 226)
             rarity = "Epic"
