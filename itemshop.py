@@ -22,7 +22,7 @@ class Athena:
 
     def main(self):
         print("Athena - Fortnite Item Shop Generator")
-        print("https://github.com/Liimiitz/Athena\n")
+        print("https://github.com/Liimiitz/Athena-FNAPI.io\n")
 
         initialized = Athena.LoadConfiguration(self)
 
@@ -89,28 +89,36 @@ class Athena:
             featured = itemShop["featured"] + itemShop["specialFeatured"]
             daily = itemShop["daily"] + itemShop["specialDaily"]
 
-            log.info(f"Featured: {len(featured)}, Daily: {len(daily)}")
+            if (len(featured) <= 0) or (len(daily) <= 0):
+                raise Exception(
+                    f"Featured: {len(featured)}, Daily: {len(daily)}")
 
             if (len(featured) >= 1):
+                width = 6
+                height = max(ceil(len(featured) / 3), ceil(len(daily) / 3))
+
                 rowsDaily = 3
                 rowsFeatured = 3
-                width = ((340 * 6) + 10)
-                height = max(ceil(len(featured) / 3), ceil(len(daily) / 3))
-                dailyStartX = 1055
 
-            if (len(featured) >= 21):
+                dailyStartX = ((340 * 3) + 100)
+
+            if (len(featured) >= 18):
+                width = 9
+                height = max(ceil(len(featured) / 6), ceil(len(daily) / 6))
+
                 rowsDaily = 3
                 rowsFeatured = 6
-                width = ((340 * 9) + 10)
-                height = max(ceil(len(featured) / 6), ceil(len(daily) / 6))
-                dailyStartX = 2075
 
-            if (len(featured) >= 21) and (len(daily) >= 21):
+                dailyStartX = ((340 * 6))
+
+            if (len(featured) >= 18) and (len(daily) >= 18):
+                width = 12
+                height = max(ceil(len(featured) / 6), ceil(len(daily) / 6))
+
                 rowsDaily = 6
                 rowsFeatured = 6
-                width = ((340 * 12) - 25)
-                height = max(ceil(len(featured) / 6), ceil(len(daily) / 6))
-                dailyStartX = 2075
+
+                dailyStartX = ((340 * 6) + 100)
 
         except Exception as e:
             log.critical(f"Failed to parse Item Shop Featured and Daily items, {e}")
@@ -120,7 +128,7 @@ class Athena:
         # Item Shop when there are 3 columns for both Featured and Daily.
         # This allows us to determine the image height.
 
-        shopImage = Image.new("RGB", (width, (530 * height) + 350))
+        shopImage = Image.new("RGB", (((340 * width) - 30), (530 * height) + 350))
 
         try:
             background = ImageUtil.Open(self, "background.png")
@@ -140,8 +148,8 @@ class Athena:
         canvas = ImageDraw.Draw(shopImage)
         font = ImageUtil.Font(self, 80)
 
-        textWidth, _ = font.getsize("FORTNITE ITEM SHOP ROTATION")
-        canvas.text(ImageUtil.CenterX(self, textWidth, shopImage.width, 30), "FORTNITE ITEM SHOP ROTATION", (255, 255, 255), font=font)
+        textWidth, _ = font.getsize("FORTNITE ITEM SHOP")
+        canvas.text(ImageUtil.CenterX(self, textWidth, shopImage.width, 30), "FORTNITE ITEM SHOP", (255, 255, 255), font=font)
         textWidth, _ = font.getsize(date.upper())
         canvas.text(ImageUtil.CenterX(self, textWidth, shopImage.width, 120), date.upper(), (255, 255, 255), font=font)
         
@@ -245,8 +253,8 @@ class Athena:
             blendColor = (113, 113, 113)
             rarity = "Shadow"
         elif rarity == "platform series":
-            blendColor = (117,108,235)
-            rarity = "Gaming Legends"
+            blendColor = (117,129,209)
+            rarity = "GamingLegends"
         elif rarity == "epic":
             blendColor = (177, 91, 226)
             rarity = "Epic"
@@ -317,19 +325,19 @@ class Athena:
         textWidth, _ = font.getsize(itemName)
 
         change = 0
-        if textWidth >= 270:
+        if textWidth >= 280:
             # Ensure that the item name does not overflow
-            font, textWidth, change = ImageUtil.FitTextX(self, itemName, 40, 250)
+            font, textWidth, change = ImageUtil.FitTextX(self, itemName, 40, 260)
         canvas.text(ImageUtil.CenterX(self, textWidth, card.width, (400 + (change / 2))), itemName, (255, 255, 255), font=font)
       
         font = ImageUtil.Font(self, 40)
-        textWidth, _ = font.getsize(f"{rarity.upper()} {category.upper()}")
+        textWidth, _ = font.getsize(f"{category.upper()}")
         
         change = 0
-        if textWidth >= 270:
+        if textWidth >= 280:
             # Ensure that the item rarity/type does not overflow
-            font, textWidth, change = ImageUtil.FitTextX(self, f"{rarity.upper()} {category.upper()}", 30, 250)
-        canvas.text(ImageUtil.CenterX(self, textWidth, card.width, (450 + (change / 2))), f"{rarity.upper()} {category.upper()}", blendColor, font=font)
+            font, textWidth, change = ImageUtil.FitTextX(self, f"{category.upper()}", 30, 260)
+        canvas.text(ImageUtil.CenterX(self, textWidth, card.width, (450 + (change / 2))), f"{category.upper()}", blendColor, font=font)
         return card
 
     def Tweet(self, date: str):
