@@ -6,9 +6,9 @@ Athena is a utility which generates the current Fortnite Item Shop into a styliz
 
 [FortniteAPI.io](https://github.com/Liimiitz/Athena-FNAPI.io)
 
-[Fortnite-API.com](https://github.com/Liimiitz/Athena)
+[Fortnite-API.com](https://github.com/Liimiitz/Athena-FNAPI.com)
 
-[FNBR.co](SoonTM)
+[FNBR.co](https://github.com/Liimiitz/Athena-FNBR.co)
 
 # Image Example
 
