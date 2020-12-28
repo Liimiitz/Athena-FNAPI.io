@@ -100,7 +100,7 @@ class Athena:
                 rowsDaily = 3
                 rowsFeatured = 3
 
-                dailyStartX = ((340 * 3) + 100)
+                dailyStartX = ((340 * 3))
 
             if (len(featured) >= 18):
                 width = 9
