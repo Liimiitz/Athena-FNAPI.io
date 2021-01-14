@@ -12,9 +12,7 @@ Athena is a utility which generates the current Fortnite Item Shop into a styliz
 
 # Image Example
 
-<p align="center">
-    <img src="https://i.imgur.com/Ga7uWvd.jpg" width="650px" draggable="false">
-</p>
+<p align="center"><img src="./example.jpeg" width="650px" draggable="false"></p>
 
 ## Requirements
 
@@ -31,7 +29,7 @@ A [FortniteAPI.io API Key](https://dashboard.fortniteapi.io/) is required to obt
 Open `configuration_example.json` in your preferred text editor, fill the configurable values. Once finished, save and rename the file to `configuration.json`.
 
 - `delayStart`: Set to `0` to begin the process immediately
-- `lang`: Set the language for the Item Shop data ([Supported Languages](https://fortniteapi.io/))
+- `language`: Set the language for the Item Shop data ([Supported Languages](https://fortniteapi.io/)
 - `supportACreator`: Leave blank to omit the Support-A-Creator tag section of the Tweet
 - `twitter`: Set `enabled` to `false` if you wish for `itemshop.png` to not be Tweeted
 
